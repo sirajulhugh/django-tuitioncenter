@@ -1,0 +1,146 @@
+{% extends 'page1.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Report</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .card {
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            margin-bottom: 20px;
+        }
+        .card:hover {
+            transform: scale(1.02);
+            transition: transform 0.2s;
+        }
+        .form-control {
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-control:focus {
+            border-color: #6c757d;
+            box-shadow: 0 0 5px rgba(108, 117, 125, 0.5);
+        }
+        h2, h3 {
+            animation: fadeInDown 1s;
+        }
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .table-responsive {
+            margin-top: 20px;
+        }
+        @media (max-width: 576px) {
+            .card {
+                padding: 10px;
+            }
+            h2, h3 {
+                font-size: 1.2rem;
+            }
+            .form-group {
+                margin-bottom: 10px;
+            }
+            .form-control, .btn {
+                font-size: 0.9rem;
+            }
+            .btn {
+                padding: 5px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card animate__animated animate__fadeInUp">
+            <h2 class="card-title">Attendance Report for Teachers</h2>
+            <form method="get" action="{% url 't_attendance_report' %}">
+                <div class="form-group">
+                    <label for="course">Select Course:</label>
+                    <select id="course" name="course" class="form-select" onchange="this.form.submit()">
+                        <option value="">Select a course</option>
+                        {% for course in courses %}
+                        <option value="{{ course.id }}" {% if selected_course and course.id == selected_course.id %}selected{% endif %}>{{ course.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                {% if selected_course %}
+                <div class="form-group">
+                    <label for="teacher">Select Teacher:</label>
+                    <select id="teacher" name="teacher" class="form-select" onchange="this.form.submit()">
+                        <option value="">Select a teacher</option>
+                        {% for teacher in selected_course.teacher_set.all %}
+                        <option value="{{ teacher.id }}" {% if selected_teacher and teacher.id == selected_teacher.id %}selected{% endif %}>{{ teacher.user.username }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                {% endif %}
+
+                {% if selected_teacher %}
+                <div class="form-group">
+                    <label for="start_date">Start Date:</label>
+                    <input type="date" id="start_date" name="start_date" class="form-control" value="{{ start_date }}">
+                </div>
+                <div class="form-group">
+                    <label for="end_date">End Date:</label>
+                    <input type="date" id="end_date" name="end_date" class="form-control" value="{{ end_date }}">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Generate Report</button>
+                {% endif %}
+            </form>
+        </div>
+
+        {% if attendance_report %}
+        <div class="card animate__animated animate__fadeInUp">
+            <h3>Attendance Report for {{ selected_teacher.user.username }} in {{ selected_course.name }}</h3>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for report in attendance_report %}
+                        <tr>
+                            <td>{{ report.date }}</td>
+                            <td>{{ report.status }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends 'page1.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        .card {
+            margin: 15px;
+            border-radius: 15px;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card a {
+            color: #fff;
+        }
+        .notification-icon {
+            font-size: 1.2rem;
+            color: #ffc107;
+            margin-right: 10px;
+        }
+        .badge-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #dc3545;
+            color: white;
+            border-radius: 50%;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="my-4 text-center">Admin Dashboard</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card bg-primary text-white animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <h5 class="card-title">Add Course</h5>
+                        <a href="{% url 'add_course' %}" class="card-link"> Add new Courses</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-success text-white animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <h5 class="card-title">Course List</h5>
+                        <a href="{% url 'course_list' %}" class="card-link">Manage existing Courses</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-info text-white animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <h5 class="card-title">Assign course</h5>
+                        <a href="{% url 'list_new_users' %}" class="card-link"> Assign course to new students and teachers</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-info text-white animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <h5 class="card-title">Manage Users</h5>
+                        <a href="{% url 'users_by_course' %}" class="card-link"> Filter students and teachers based on course</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-warning text-white animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <h5 class="card-title">Mark Attendance</h5>
+                        <a href="{% url 'tenter_attendance' %}" class="card-link"> Mark Attendance for teachers</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-danger text-white animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <h5 class="card-title">Attendance Report (Teachers)</h5>
+                        <a href="{% url 'tattendance_report' %}" class="card-link">Go to Attendance Report of Teachers</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-secondary text-white animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <h5 class="card-title">Attendance Report (Students)</h5>
+                        <a href="{% url 'asattendance_report' %}" class="card-link">Go to Attendance Report of Students</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        {% if no_new_users %}
+            <div class="alert alert-info mt-4" role="alert">
+                No new students or teachers.
+            </div>
+        {% else %}
+        
+        <div class="alert alert-warning mt-4" role="alert">
+            <span class="notification-icon">
+                <i class="fas fa-bell">{{ new_students_count|add:new_teachers_count }}</i>
+            </span>
+            <strong>You have notification:</strong><br><br>
+            <p>New Students: {{ new_students_count }}</p>
+            <p>New Teachers: {{ new_teachers_count }}</p>
+            <p><a href="{% url 'list_fresh_users' %}" class="alert-link">Approve or discard new Users</a></p>
+        </div>
+        {% endif %}
+
+        <!-- Reset Password Button -->
+        <div class="text-center mt-4">
+            <a href="{% url 'reset_password' %}" class="btn btn-warning">Reset Password</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Font Awesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
+{% endblock %}

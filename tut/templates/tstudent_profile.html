@@ -1,0 +1,70 @@
+{% extends 'page2.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        .profile-card {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f8f9fa; /* Light background color */
+            transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition effects */
+        }
+        .profile-card:hover {
+            transform: translateY(-5px); /* Slight hover effect */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+        }
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #007bff; /* Blue border for the profile image */
+        }
+        .profile-info {
+            margin-top: 20px;
+        }
+        @media (max-width: 767px) {
+            .profile-image {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-card animate__animated animate__fadeInUp">
+            <div class="text-center">
+                {% if student.images %}
+                    <img src="{{ student.images.url }}" alt="Student Image" class="profile-image">
+                {% else %}
+                    <img src="https://via.placeholder.com/150" alt="No Image" class="profile-image">
+                {% endif %}
+            </div>
+            <div class="profile-info text-center">
+                <h2 class="text-primary">{{ student.user.username }}</h2>
+                <p><strong>Age:</strong> {{ student.age }}</p>
+                <p><strong>Address:</strong> {{ student.address }}</p>
+                <p><strong>Date of Join:</strong> {{ student.date_of_join }}</p>
+                <p><strong>Course:</strong> {{ student.course.name }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

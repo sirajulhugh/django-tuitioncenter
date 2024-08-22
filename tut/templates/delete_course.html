@@ -1,0 +1,54 @@
+{% extends 'page1.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Course</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        .delete-course-container {
+            max-width: 500px;
+            margin: 100px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .delete-course-container h2 {
+            color: #dc3545;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+        .delete-course-container button {
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+        .delete-course-container a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .delete-course-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="delete-course-container">
+        <h2>Are you sure you want to delete the course "{{ course.name }}"?</h2>
+        <form action="{% url 'delete_course_' course.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Yes, delete</button>
+            <a href="{% url 'course_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div><br><br><br><br>
+</body>
+</html>
+
+{% endblock %}

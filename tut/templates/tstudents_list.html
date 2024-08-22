@@ -1,0 +1,95 @@
+{% extends 'page2.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        h1 {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .table-responsive {
+            margin-top: 20px;
+        }
+        th {
+            text-align: center;
+        }
+        td {
+            text-align: center;
+            vertical-align: middle;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        img {
+            border-radius: 50%;
+            transition: transform 0.2s;
+        }
+        img:hover {
+            transform: scale(1.1);
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="animate__animated animate__fadeInDown">Students List</h1>
+        <div class="table-responsive animate__animated animate__fadeInUp">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Address</th>
+                        <th>Date of Join</th>
+                        <th>Image</th>
+                        <th>Course</th>
+                        <th>Actions</th> <!-- New Column -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                        <tr>
+                            <td>{{ student.user.username }}</td>
+                            <td>{{ student.age }}</td>
+                            <td>{{ student.address }}</td>
+                            <td>{{ student.date_of_join }}</td>
+                            <td>
+                                {% if student.images %}
+                                    <img src="{{ student.images.url }}" alt="Student Image" class="img-fluid" style="width:100px;height:100px;">
+                                {% else %}
+                                    No image
+                                {% endif %}
+                            </td>
+                            <td>{{ student.course.name }}</td>
+                            <td>
+                                <a href="{% url 'tstudent_profile' student.id %}" class="btn btn-info btn-sm">View Profile</a> <!-- Link to Profile -->
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

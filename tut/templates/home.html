@@ -1,0 +1,934 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
+</head>
+<style>
+
+    
+body {
+	margin: 0 auto;
+	padding: 0;
+	font-size: 16px;
+	background: #fff;
+	section {display: block;} 
+	h1, h2, h3, h4, h5, h6, ul, li {
+		margin: 0;
+		padding: 0;
+	}
+	h1 {
+		font-family: Montserrat, sans-serif;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+	h2 {
+		font-family: Montserrat, sans-serif;
+		font-size: 1.875em;
+		font-weight: 700;
+		text-transform: uppercase;
+	}
+	h3 {
+		font-family: 'Kaushan Script', cursive;
+		font-size: 1.5em;
+		font-weight: 400;
+	}
+	h4 {
+		font-family: Montserrat, sans-serif;
+		font-size: 0.875em;
+		font-weight: 400;
+		text-transform: uppercase;
+	}
+	p {
+		line-height: 150%;
+		font-family: Roboto, sans-serif;
+		font-size: 0.9375em;
+		color: #999;
+	}
+	li {list-style-type: none;}
+	a {text-decoration: none;}
+}
+.bg-wrapper {
+	width: 100%;
+	height: 100%;
+	background-image: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8));
+}
+.section-header {
+	padding-top: 5.625em;
+	text-align: center;
+	h3 {margin-bottom: 0.5em;}
+	.line-red {margin: 2.5em auto 2.9375em auto;}
+}
+.line-red {
+	display: block;
+	width: 4em;
+	height: 0.1875em;
+	margin: 0 auto;
+	background: #f38181;
+}
+
+/* Main Header Styles */
+.main-header {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+	font-family: Montserrat, sans-serif;
+	color: #fff;
+	background: transparent;
+	.header-wrapper {
+		display: block;
+		width: 70%;
+		margin: 0 auto;
+		padding-top: 1em;
+		.main-logo {
+			float: left;
+			font-weight: 700;
+			font-size: 1.875em;
+			img {
+				height: 100px;
+            	vertical-align: middle;
+            	margin-right: 10px;
+			}
+					}
+		.main-menu {
+			float: right;
+			text-align: center;
+			li {
+				display: inline-block;
+				padding: 0.75em 1.875em;
+				a {
+					padding-bottom: 0.75em;
+					text-transform: uppercase;
+					color: #fff;
+					font-size: 0.875em;
+					&:hover {
+						color: #fce38a;
+						border-bottom: 0.1875em solid #fce38a;
+						transition: .1s;
+					}
+					span {font-size: 1.2em;}
+				}
+				&:last-child {padding: 0.75em 0;}
+				&:nth-child(6) a:hover, &:last-child a:hover {border: none;}
+			}
+		}
+	}
+}
+
+main-logo img{
+			height: 50px;
+            vertical-align: middle;
+            margin-right: 10px;
+			
+		}
+
+/* Section-1 Styles */
+#section-1 {
+	height: 38em;
+	color: #fff;
+	background-color: #222;
+	.content-slider {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		input {display: none;}
+		.slider {
+			position: relative;
+			width: inherit;
+			height: inherit;
+			overflow: hidden;
+			.banner {
+				position: absolute;
+				top: 0;
+				left: 0;
+				opacity: 0;
+				z-index: 0;
+				width: inherit;
+				height: inherit;
+				text-align: center;
+				background-repeat: no-repeat;
+				background-position: 50% 50%;
+				transition: all .5s ease;
+				.banner-inner-wrapper {
+					height: 100%;
+					padding-top: 6em;
+					background-image: linear-gradient(rgba(243,129,129,.9), rgba(252,227,138,.9));
+					box-sizing: border-box;
+					h2 {
+						padding-bottom: 0.3em;
+						font-family: 'Kaushan Script', cursive;
+						font-weight: 400;
+						font-size: 2.5em;
+						text-transform: none;
+					}
+					h1 {
+						font-size: 6em;
+						line-height: 95%;
+					}
+					.line {
+							display: block;
+							width: 4em;
+							height: 0.1875em;
+							margin: 2.5em auto;
+							background: #fff;
+					}
+					.learn-more-button {
+						padding-bottom: 5em;
+						z-index: 15 !important;
+						a {
+							padding: 0.5em 2em;
+							text-align: center;
+							font-family: Montserrat, sans-serif;
+							font-size: 0.875em;
+							color: #fff;
+							text-transform: uppercase;
+							border: 0.1875em solid #fff;
+							&:hover {
+								color: #e88382;
+								border-color: #e88382;
+								transition: .3s;
+							}
+						}
+					}
+				}
+			}
+			#top-banner-1 {background: url('https://checkboxes-demo.webdevs.co.ua/images/mogo/banner-1.png') no-repeat center center; background-size: cover;}
+			#top-banner-2 {background: url('https://checkboxes-demo.webdevs.co.ua/images/mogo/banner-2.png') no-repeat center center; background-size: cover;}
+			#top-banner-3 {background: url('https://checkboxes-demo.webdevs.co.ua/images/mogo/banner-3.png') no-repeat center center; background-size: cover;}
+			#top-banner-4 {background: url('https://checkboxes-demo.webdevs.co.ua/images/mogo/banner-4.png') no-repeat center center; background-size: cover;}
+		}
+		nav {
+			position: absolute;
+			bottom: 0.5em;
+			width: 100%;
+			z-index: 10;
+			text-align: center;
+			.controls {
+				display: block;
+				width: 70%;
+				margin: 0 auto;
+				font-family: Montserrat, sans-serif;
+				color: #fff;
+				label {
+					position: relative;
+					display: inline-block;
+					width: 20%;
+					height: 3.1em;
+					overflow: hidden;
+					margin: 0 1em;
+					padding-top: 1em;
+					text-align: left;
+					text-transform: uppercase;
+					font-family: Montserrat, sans-serif;
+					font-size: 1em;
+					color: #f6eac5;
+					font-weight: 400;
+					cursor: pointer;
+					transition: all .3s;
+					.progressbar {
+						position: absolute;
+						top: 0;
+						left: 0;
+						height: 3px;
+						width: 100%;
+						background: #f6eac5;
+						z-index: 100;
+						.progressbar-fill {
+							position: inherit;
+							width: inherit;
+							height: inherit;
+							margin-left: -100%;
+							background: #e88382;
+						}
+					}
+					span {
+						font-size: 1.4em;
+						font-weight: 700;
+					}
+					&:hover {color: #e88382;}
+				}
+			}
+		}
+		#banner1:checked ~ .slider #top-banner-1,
+		#banner2:checked ~ .slider #top-banner-2,
+		#banner3:checked ~ .slider #top-banner-3,
+		#banner4:checked ~ .slider #top-banner-4 {
+			opacity: 1;
+			z-index: 1;
+		}
+		#banner1:checked ~ nav label:nth-of-type(1),
+		#banner2:checked ~ nav label:nth-of-type(2),
+		#banner3:checked ~ nav label:nth-of-type(3),
+		#banner4:checked ~ nav label:nth-of-type(4) {
+			cursor: default;
+			color: #fff;
+			transition: all .5s;
+		}
+		#banner1:checked ~ nav label:nth-of-type(1) .progressbar,
+		#banner2:checked ~ nav label:nth-of-type(2) .progressbar,
+		#banner3:checked ~ nav label:nth-of-type(3) .progressbar,
+		#banner4:checked ~ nav label:nth-of-type(4) .progressbar {
+			background: #fff;
+		}
+		#banner1:checked ~ nav label:nth-of-type(1) .progressbar-fill,
+		#banner2:checked ~ nav label:nth-of-type(2) .progressbar-fill,
+		#banner3:checked ~ nav label:nth-of-type(3) .progressbar-fill,
+		#banner4:checked ~ nav label:nth-of-type(4) .progressbar-fill {
+			animation: progressBarFill 5s linear;
+		}
+	}
+}
+.footer {
+            background: rgba(255, 255, 255, 0.6);
+            color: rgb(96, 90, 90);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #499bec;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #5c3ec6;
+        }
+
+        .social-icons {
+            margin: 10px 0;
+        }
+
+        .social-icons a {
+            color: rgb(15, 131, 174);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #499bec;
+        }
+
+/* Animations */
+@keyframes progressBarFill {
+	from {margin-left: -100%;}
+	to {margin-left: 0;}
+}
+
+/* Media Queries */
+@media only screen and (min-width: 1920px) {
+	body {font-size: 22px;}
+	.main-header .header-wrapper {width: 57%;}
+	#section-1 {height: 46em;}
+	#section-1 .content-slider .slider .banner .banner-inner-wrapper {padding-top: 12em;}
+}
+
+@media only screen and (max-width: 1919px) {
+	body {font-size: 20px;}
+	.main-header .header-wrapper {width: 60%;}
+	#section-1 {height: 43em;}
+	#section-1 .content-slider .slider .banner .banner-inner-wrapper {padding-top: 11em;}
+}
+
+@media only screen and (max-width: 1680px) {
+	body {font-size: 18px;}
+	.main-header .header-wrapper {width: 65%;}
+	#section-1 {height: 40em;}
+	#section-1 .content-slider .slider .banner .banner-inner-wrapper {padding-top: 9em;}
+}
+
+@media only screen and (max-width: 1366px) {
+	body {font-size: 16px;}
+	.main-header .header-wrapper {width: 70%;}
+}
+
+@media only screen and (max-width: 1120px) {
+	.main-header .header-wrapper .main-menu li {padding: 0.75em 1.4em;}
+	#section-1 {height: 35em;}
+	#section-1 .content-slider nav {bottom: -0.2em;}
+	#section-1 .content-slider .slider .banner .banner-inner-wrapper {padding-top: 7em;}
+	#section-1 .content-slider .slider .banner .banner-inner-wrapper .line {margin: 2em auto;}
+}
+
+@media only screen and (max-width: 1024px) {
+	body {font-size: 14px;}
+	.main-header .header-wrapper .main-menu li {padding: 0.75em 1.3em;}
+	#section-1 .content-slider nav {bottom: 0;}
+	#section-1 .content-slider nav .controls {width: 80%;}
+}
+
+@media only screen and (max-width: 860px) {
+	.main-header .header-wrapper .main-menu li {padding: 0.75em 0.9em;}
+	#section-1 {height: 29em;}
+	#section-1 .content-slider nav {bottom: -1em;}
+	#section-1 .content-slider nav .controls {width: 90%;}
+	#section-1 .content-slider .slider .banner .banner-inner-wrapper h2 {font-size: 2em;}
+	#section-1 .content-slider .slider .banner .banner-inner-wrapper h1 {font-size: 4.5em;}
+	#section-1 .content-slider .slider .banner .banner-inner-wrapper {padding-top: 5em;}
+}
+
+@media only screen and (max-width: 768px) {
+	.main-header .header-wrapper .main-menu li {padding: 0.75em 0.5em;}
+	#section-1 {height: 27em;}
+	#section-1 .content-slider nav .controls {width: 100%;}
+	#section-1 .content-slider nav .controls label {width: 19%; font-size: 0.8em;}
+	#section-1 .content-slider .slider .banner .banner-inner-wrapper .line {margin: 1.7em auto;}
+}
+
+@media only screen and (max-width: 650px) {.main-header .header-wrapper {width: 95%;}}
+
+@media only screen and (max-width: 480px) {
+	.main-header .header-wrapper {width: 97%;}
+	.main-header .header-wrapper .main-logo {display: none;}
+	.main-header .header-wrapper .main-menu li {padding: 0.2em 0.3em;}
+	.main-header .header-wrapper .main-menu li:last-child,
+	.main-header .header-wrapper .main-menu li:nth-child(6) {padding: 0.2em 0.7em;}
+	#section-1 {height: 26em;}
+	#section-1 .content-slider nav {bottom: -0.5em;}
+	#section-1 .content-slider nav .controls label {width: 40%; font-size: 0.7em;}
+	#section-1 .content-slider .slider .banner .banner-inner-wrapper h2 {font-size: 1.5em;}
+	#section-1 .content-slider .slider .banner .banner-inner-wrapper h1 {font-size: 3em;}
+	#section-1 .content-slider .slider .banner .banner-inner-wrapper .line {margin: 1.7em auto;}
+}
+
+
+</style>
+
+    <body>
+        <header class="main-header">
+          <div class="header-wrapper">
+            <div class="main-logo"><img src="{% static 'images\eduic.jpg' %}" alt="Institution Logo"></div>
+            <nav>
+              <ul class="main-menu">
+				<li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'aboutus' %}">About</a></li>
+                <li><a href="{% url 'loginpage' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Signup</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+        <section id="section-1">
+          <div class="content-slider">
+            <input type="radio" id="banner1" class="sec-1-input" name="banner" checked>
+            <input type="radio" id="banner2" class="sec-1-input" name="banner">
+            <input type="radio" id="banner3" class="sec-1-input" name="banner">
+            <input type="radio" id="banner4" class="sec-1-input" name="banner">
+            <div class="slider">
+              <div id="top-banner-1" class="banner">
+                <div class="banner-inner-wrapper">
+                  <h2>Are you an science graduate?</h2>
+                  <h1>Career in IT?</h1>
+                  <h6>looking to kickstart a career in IT sector?</h6>
+                  <div class="line"></div>
+                  <div class="learn-more-button"><a href="{% static 'images/Altos Technologies Broucher.pdf' %}">Learn More</a></div>
+                </div>
+              </div>
+              <div id="top-banner-2" class="banner">
+                <div class="banner-inner-wrapper">
+                  <h2>Be industry ready</h2>
+                  <h1>Upskill</h1>
+				  <h6>Learn latest Tech course that guarantee a job in IT sector</h6>
+                  <div class="line"></div>
+                  <div class="learn-more-button"><a href="{% static 'images/altos Success Stories print file.pdf' %}">Learn More</a></div>
+                </div>
+              </div>
+              <div id="top-banner-3" class="banner">
+                <div class="banner-inner-wrapper">
+                  <h2>Trained by IT proffessionals</h2>
+                  <h1>Tech related <br> Courses</h1>
+				  <h6>Choose a course that match your intreast</h6>
+                  <div class="line"></div>
+                  <div class="learn-more-button"><a href="{% static 'images/altos Success Stories print file.pdf' %}">Learn More</a></div>
+                </div>
+              </div>
+              <div id="top-banner-4" class="banner">
+                <div class="banner-inner-wrapper">
+                  <h2>Still having doubts?</h2>
+                  <h1> Contact Us</h1>
+				  <h6>Clearing course selection dilemma and for general queries</h6>
+                  <div class="line"></div>
+                  <div class="learn-more-button"><a href="{% url 'contact' %}">Learn More</a></div>
+                </div>
+              </div>
+            </div>
+            <nav>
+              <div class="controls">
+                <label for="banner1"><span class="progressbar"><span class="progressbar-fill"></span></span><span>01</span> Graduate?</label>
+                <label for="banner2"><span class="progressbar"><span class="progressbar-fill"></span></span><span>02</span> Whats next?</label>
+                <label for="banner3"><span class="progressbar"><span class="progressbar-fill"></span></span><span>03</span> Join us</label>
+                <label for="banner4"><span class="progressbar"><span class="progressbar-fill"></span></span><span>04</span> Contacts</label>
+              </div>
+            </nav>
+			
+          </div>
+		  
+        </section>
+<br><br><br>
+		<div class="blog-card">
+			<div class="meta">
+			  <div class="photo" style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg)"></div>
+			  <ul class="details">
+				<li class="author"><a href="#">Siraj</a></li>
+				<li class="date">Aug. 24, 2015</li>
+				<li class="tags">
+				  <ul>
+					<li><a href="#">Learn</a></li>
+					<li><a href="#">Code</a></li>
+					<li><a href="#">HTML</a></li>
+					<li><a href="#">CSS</a></li>
+					<li><a href="#">JS</a></li>
+					<li><a href="#">Django</a></li>
+				  </ul>
+				</li>
+			  </ul>
+			</div>
+			<div class="description">
+			  <h1>Learning to Code</h1>
+			  <h2>Opening a door to the future</h2>
+			  <p>We offers intensive training in the latest
+				and trending technologies, equipping graduates with
+				the skills needed to secure a job in the IT field. Our
+				comprehensive programs cover industry-relevant
+				topics, empowering participants to excel in the
+				competitive job market and embark on successful
+				technological careers.</p>
+			  <p class="read-more">
+				<a href="#">Read More</a>
+			  </p>
+			</div>
+		  </div>
+		  <div class="blog-card alt">
+			<div class="meta">
+			  <div class="photo" style="background-image: url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-2.jpg)"></div>
+			  <ul class="details">
+				<li class="author"><a href="#">Siraj</a></li>
+				<li class="date">July. 15, 2015</li>
+				<li class="tags">
+				  <ul>
+					<li><a href="#">Learn</a></li>
+					<li><a href="#">Code</a></li>
+					<li><a href="#">JavaScript</a></li>
+					<li><a href="#">Django</a></li>
+				  </ul>
+				</li>
+			  </ul>
+			</div>
+			<div class="description">
+			  <h1>Digital Marketing</h1>
+			  <h2>Target audience through digital means.</h2>
+			  <p>Propel your online presence with Our Technologies'
+				Digital Marketing expertise. From strategic planning to
+				execution, we drive results through targeted
+				campaigns, SEO optimization, and engaging content.
+				Boost your brand visibility and reach your audience
+				effectively with our comprehensive digital marketing
+				solutions.
+			  </p>
+			  <p class="read-more">
+				<a href="#">Read More</a>
+			  </p>
+			</div>
+		  </div>
+		  <div class="blog-card">
+			<div class="meta">
+			  <div class="photo" style="background-image: url('{% static 'images/sd.jpg' %}')"></div>
+			  <ul class="details">
+				<li class="author"><a href="#">Siraj</a></li>
+				<li class="date">Aug. 24, 2015</li>
+				<li class="tags">
+				  <ul>
+					<li><a href="#">Learn</a></li>
+					<li><a href="#">Code</a></li>
+					<li><a href="#">HTML</a></li>
+					<li><a href="#">CSS</a></li>
+					<li><a href="#">Django</a></li>
+				  </ul>
+				</li>
+			  </ul>
+			</div>
+			<div class="description">
+			  <h1>Custom Software Development</h1>
+			  <h2> Creating, Deploying, and Maintaining Software solutions</h2>
+			  <p> Elevate your business with Our Technologies' Custom
+				Software Development services. Our expert team
+				tailors solutions to your unique requirements,
+				delivering innovative, scalable, and efficient software
+				that empowers your organization to thrive in the
+				digital landscape.</p>
+			  <p class="read-more">
+				<a href="#">Read More</a>
+			  </p>
+			</div>
+		  </div>
+		  <div class="blog-card alt">
+			<div class="meta">
+			  <div class="photo" style="background-image: url('{% static 'images/wd.jpg' %}')"></div>
+			  <ul class="details">
+				<li class="author"><a href="#">Siraj</a></li>
+				<li class="date">July. 15, 2015</li>
+				<li class="tags">
+				  <ul>
+					<li><a href="#">Learn</a></li>
+					<li><a href="#">Code</a></li>
+					<li><a href="#">JavaScript</a></li>
+					<li><a href="#">Django</a></li>
+				  </ul>
+				</li>
+			  </ul>
+			</div>
+			<div class="description">
+			  <h1>Website Development</h1>
+			  <h2>It encompasses various aspects, including design, coding, content creation, and functionality</h2>
+			  <p>Transform your online presence with Our
+				Technologies' Website Development services. Our
+				team combines creativity and functionality to craft
+				visually appealing and user-friendly websites. From
+				e-commerce platforms to informational sites, we
+				design and develop web solutions that align with your
+				business goals, leaving a lasting digital impression
+			  </p>
+			  <p class="read-more">
+				<a href="#">Read More</a>
+			  </p>
+			</div>
+		  </div>
+
+		</div>
+		  <style>
+			/*PEN STYLES*/
+
+* {
+  box-sizing: border-box;
+}
+
+/* body {
+  background: #f1f1f1;
+  display: flex;
+  flex-direction:column;
+  font-size: 1rem;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+} */
+
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  box-shadow: 0 3px 7px -1px rgba(#000, .1);
+  margin-bottom: 1.6%;
+  background: #fff;
+  line-height: 1.4;
+  font-family: sans-serif;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 0;
+  a {
+    color: inherit;
+    &:hover {
+      color: #5ad67d;
+    }
+  }
+  &:hover {
+    .photo {
+      transform: scale(1.3) rotate(3deg);
+    }
+  }
+  .meta {
+    position: relative;
+    z-index: 0;
+    height: 200px;
+  }
+  .photo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform .2s;
+  }
+  .details,
+  .details ul {
+    margin: auto;
+    padding: 0;
+    list-style: none;
+  }
+
+  .details {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    margin: auto;
+    transition: left .2s;
+    background: rgba(#000, .6);
+    color: #fff;
+    padding: 10px;
+    width: 100%;
+    font-size: .9rem;
+    a {
+      text-decoration: dotted underline
+    }
+    ul li {
+      display: inline-block;
+    }
+    .author:before {
+      font-family: FontAwesome;
+      margin-right: 10px;
+      content: "\f007";
+    }
+
+    .date:before {
+      font-family: FontAwesome;
+      margin-right: 10px;
+      content: "\f133";
+    }
+
+    .tags {
+      ul:before {
+        font-family: FontAwesome;
+        content: "\f02b";
+        margin-right: 10px;
+      }
+      li {
+        margin-right: 2px;
+        &:first-child {
+          margin-left: -4px;
+        }
+      }
+    }
+  }
+  .description {
+    padding: 1rem;
+    background: #fff;
+    position: relative;
+    z-index: 1;
+    h1,
+    h2 {
+      font-family: Poppins, sans-serif;
+    }
+    h1 {
+      line-height: 1;
+      margin: 0;
+      font-size: 1.7rem;
+    }
+    h2 {
+      font-size: 1rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      color: #a2a2a2;
+      margin-top: 5px;
+    }
+    .read-more {
+      text-align: right;
+      a {
+        color: #5ad67d;
+        display: inline-block;
+        position: relative;
+        &:after {
+          content: "\f061";
+          font-family: FontAwesome;
+          margin-left: -10px;
+          opacity: 0;
+          vertical-align: middle;
+          transition: margin .3s, opacity .3s;
+        }
+
+        &:hover:after {
+          margin-left: 5px;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  p {
+    position: relative;
+    margin: 1rem 0 0;
+    &:first-of-type {
+      margin-top: 1.25rem;
+      &:before {
+        content: "";
+        position: absolute;
+        height: 5px;
+        background: #5ad67d;
+        width: 35px;
+        top: -0.75rem;
+        border-radius: 3px;
+      }
+    }
+  }
+  &:hover {
+    .details {
+      left: 0%;
+    }
+  }
+
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    max-width: 700px;
+    .meta {
+      flex-basis: 40%;
+      height: auto;
+    }
+    .description {
+      flex-basis: 60%;
+      &:before {
+        transform: skewX(-3deg);
+        content: "";
+        background: #fff;
+        width: 30px;
+        position: absolute;
+        left: -10px;
+        top: 0;
+        bottom: 0;
+        z-index: -1;
+      }
+    }
+    &.alt {
+      flex-direction: row-reverse;
+      .description {
+        &:before {
+          left: inherit;
+          right: -10px;
+          transform: skew(3deg)
+        }
+      }
+      .details {
+        padding-left: 25px;
+      }
+    }
+  }
+}
+		  </style>
+<br><br><br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4 col-sm-6 mb-4">
+            <div style="height: 350px; border-radius: 40px; box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22); cursor: pointer; transition: 0.4s;">
+                <div style="height: 80%; border-radius: 40px;">
+                    <img src="https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif" style="width: 100%; height: 100%; border-radius: 40px 40px 0 0; object-fit: cover;" />
+                </div>
+                <div style="height: 20%; text-align: center; border-radius: 0px 0px 40px 40px; font-family: sans-serif; font-weight: bold; font-size: 20px; color: black;">
+                    <p style="margin: 0; line-height: 60px;"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 mb-4">
+            <div style="height: 350px; border-radius: 40px; box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22); cursor: pointer; transition: 0.4s;">
+                <div style="height: 80%; border-radius: 40px;">
+                    <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2dmNTkyc3RocTltbWlpbDVwZGRxbXNxMXI5OW52b21ldXJnMTVvNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JUMagNHzWMeAkx9pyV/giphy.gif" style="width: 100%; height: 100%; border-radius: 40px 40px 0 0; object-fit: cover;" />
+                </div>
+                <div style="height: 20%; text-align: center; border-radius: 0px 0px 40px 40px; font-family: sans-serif; font-weight: bold; font-size: 20px; color: white;">
+                    <p style="margin: 0; line-height: 60px;"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 mb-4">
+            <div style="height: 350px; border-radius: 40px; box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22); cursor: pointer; transition: 0.4s;">
+                <div style="height: 80%; border-radius: 40px;">
+                    <img src="https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif" style="width: 100%; height: 100%; border-radius: 40px 40px 0 0; object-fit: cover;" />
+                </div>
+                <div style="height: 20%; text-align: center; border-radius: 0px 0px 40px 40px; font-family: sans-serif; font-weight: bold; font-size: 20px; color: black;">
+                    <p style="margin: 0; line-height: 60px;"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+	<div class="content" style="width: 100%; max-width: 120ch; padding: 3em 1em; margin: 0 auto;">
+	  <div class="marquee" style="position: relative; width: 100%; height: 2em; font-size: 5em; display: grid; place-items: center; overflow: hidden;">
+		
+		<div class="marquee_blur" aria-hidden="true" style="position: absolute; inset: 0; display: grid; place-items: center; background-color: rgb(202, 107, 107); background-image: linear-gradient(to right, rgb(223, 181, 29), 1rem, transparent 50%), linear-gradient(to left,rgb(223, 181, 29), 1rem, transparent 50%); filter: contrast(15);">
+		  <p class="marquee_text" style="position: absolute; min-width: 100%; white-space: nowrap; animation: marquee 16s infinite linear; filter: blur(0.07em);">1 Lakh+ satisfied learners</p>
+		</div>
+  
+		<div class="marquee_clear" style="position: absolute; inset: 0; display: grid; place-items: center;">
+		  <p class="marquee_text" style="position: absolute; min-width: 100%; white-space: nowrap; animation: marquee 16s infinite linear;">1 Lakh+ satisfied learners</p>
+		</div>
+  
+	  </div>
+	</div>
+  </div>
+  
+  <style>
+	@keyframes marquee {
+	  from { transform: translateX(70%); }
+	  to { transform: translateX(-70%); }
+	}
+  </style>
+
+
+
+		<div class="footer">
+			<p>&copy; 2024 our Company. All rights reserved.</p>
+			<p>Contact us: <a href="mailto:info@ourcompany.com">info@ourcompany.com</a> | Phone: +123-456-7890</p>
+			<div class="social-icons">
+				<a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+				<a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+				<a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+				<a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+			</div>
+
+		</div>
+		
+      </body>
+<script>
+    ///// Section-1 CSS-Slider /////    
+  // Auto Switching Images for CSS-Slider
+  function bannerSwitcher() {
+    next = $('.sec-1-input').filter(':checked').next('.sec-1-input');
+    if (next.length) next.prop('checked', true);
+    else $('.sec-1-input').first().prop('checked', true);
+  }
+
+  var bannerTimer = setInterval(bannerSwitcher, 5000);
+
+  $('nav .controls label').click(function() {
+    clearInterval(bannerTimer);
+    bannerTimer = setInterval(bannerSwitcher, 5000)
+  });
+
+
+///// Anchor Smooth Scroll /////
+//   $('.main-menu a, .learn-more-button a').click(function(e){
+    
+//     e.preventDefault();
+        
+//     var target = $(this).attr('href');
+        
+//     $('html, body').animate({scrollTop: $(target).offset().top}, 1000);
+//     return false;
+//   });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
+
+</html>
+

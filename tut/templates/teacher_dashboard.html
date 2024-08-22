@@ -1,0 +1,124 @@
+{% extends 'page2.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body {
+            background-color: #f5f5f5;
+        }
+        .card {
+            margin: 15px;
+            border-radius: 15px;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card a {
+            color: #fff;
+        }
+        .alert {
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="alert alert-success animate__animated animate__fadeInDown">
+            Welcome, {{ teacher.user.username }}!
+        </div>
+        {% if teacher.course %}
+        <div class="card bg-light animate__animated animate__fadeInUp">
+            <div class="card-body">
+                <h5 class="card-title">Assigned Course</h5>
+                <p class="card-text">You have been assigned to the course: <strong>{{ teacher.course.name }}</strong></p>
+                <p class="card-text">Course Duration: {{ teacher.course.duration }} Weeks</p>
+                {% if teacher.course.syllabus %}
+                <a href="{{ teacher.course.syllabus.url }}" class="btn btn-primary">View Syllabus</a>
+                {% else %}
+                <p class="card-text">Syllabus: Not available</p>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card bg-primary text-white animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <h5 class="card-title">Student List</h5>
+                        <a href="{% url 'tstudents_list' %}" class="card-link">View List of Students</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-success text-white animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <h5 class="card-title">Tasks</h5>
+                        <a href="{% url 'ttask_list' %}" class="card-link">Add & View tasks</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-info text-white animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <h5 class="card-title">Mark Attendance</h5>
+                        <a href="{% url 'senter_attendance' %}" class="card-link">Mark Attendance of students</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-warning text-white animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <h5 class="card-title">Student Attendance Report</h5>
+                        <a href="{% url 'sattendance_report' %}" class="card-link">View Attendance Report of Students</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-danger text-white animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <h5 class="card-title">Attendance Summary</h5>
+                        <a href="{% url 'teacher_attendance_summary' %}" class="card-link">View Attendance Summary</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card bg-secondary text-white animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <h5 class="card-title">Student Assignments</h5>
+                        <a href="{% url 'teacher_task_list' %}" class="card-link">View Student Assignments</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-secondary text-white animate__animated animate__fadeInUp">
+                <div class="card-body">
+                    <h5 class="card-title">Profile</h5>
+                    <a href="{% url 'teacher_profile' %}" class="card-link">View and Edit Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'reset_password' %}" class="btn btn-danger mt-3">Reset Password</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

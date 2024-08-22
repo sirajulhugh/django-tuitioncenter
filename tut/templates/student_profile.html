@@ -1,0 +1,87 @@
+{% extends 'page3.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+        .img-fluid {
+            border-radius: 50%;
+            border: 3px solid #007bff;
+            transition: border-color 0.3s;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .img-fluid:hover {
+            border-color: #0056b3;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004494;
+        }
+        .card-body p {
+            font-size: 1.1rem;
+            color: #333;
+        }
+        .card-body p strong {
+            color: #333e0d;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Profile</h1>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 text-center mb-4 mb-md-0">
+                        <img src="{{ student.images.url }}" alt="Profile Picture" class="img-fluid rounded-circle">
+                    </div>
+                    <div class="col-md-8">
+                        <p><strong>First Name:</strong> {{ student.user.first_name }}</p>
+                        <p><strong>Last Name:</strong> {{ student.user.last_name }}</p>
+                        <p><strong>Username:</strong> {{ student.user.username }}</p>
+                        <p><strong>Email:</strong> {{ student.user.email }}</p>
+                        <p><strong>Age:</strong> {{ student.age }}</p>
+                        <p><strong>Address:</strong> {{ student.address }}</p>
+                        <p><strong>Date of Join:</strong> {{ student.date_of_join }}</p>
+                        <a href="{% url 'edit_student_profile' %}" class="btn btn-primary">Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

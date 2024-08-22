@@ -1,0 +1,43 @@
+{% extends 'page1.html' %}
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow-lg border-0">
+        <div class="card-header bg-warning text-white text-center">
+            <h2 class="card-title">{{ user.user.username }}'s Profile</h2>
+        </div>
+        <div class="card-body">
+            <div class="text-center">
+                <img src="{{ user.images.url }}" alt="Profile Image" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+            </div>
+            <h4 class="mt-3 text-center">Details</h4>
+            <p><strong>Username:</strong> {{ user.user.username }}</p>
+            <p><strong>Age:</strong> {{ user.age }}</p>
+            {% if user_type == 'teacher' %}
+            <p><strong>Phone Number:</strong> {{ user.phnoenumber }}</p>
+            {% endif %}
+            <p><strong>Address:</strong> {{ user.address }}</p>
+            <p><strong>Course:</strong> {{ user.course.name }}</p>
+            {% if user_type == 'student' %}
+            <p><strong>Date of Join:</strong> {{ user.date_of_join }}</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Custom styles for animations and aesthetics */
+    .card {
+        transition: transform 0.2s; /* Animation for hover effect */
+    }
+    .card:hover {
+        transform: scale(1.05); /* Scale on hover */
+    }
+    
+    /* For responsive images */
+    .img-fluid {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+{% endblock %}
+
